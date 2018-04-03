@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToeffToeff.Interfaces.Entities
 {
-    interface IBrand
+    public interface IBrand
     {
         int Id { get; set; }
 

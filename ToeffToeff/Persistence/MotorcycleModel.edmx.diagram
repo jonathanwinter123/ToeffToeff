@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="687b351ad98341a3a7c4d1f9fd260e58" Name="Diagram1">
-        <EntityTypeShape EntityType="MotorcycleModel.Brand" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MotorcycleModel.Model" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MotorcycleModel.ModelPerson" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MotorcycleModel.Person" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <AssociationConnector Association="MotorcycleModel.FK__Model__BrandID__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="MotorcycleModel.FK__ModelPers__Model__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="MotorcycleModel.FK__ModelPers__Perso__2A4B4B5E" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="MotorcycleModel.Brand" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="MotorcycleModel.Person" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="MotorcycleModel.Model" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="MotorcycleModel.ModelPerson" Width="1.5" PointX="5.25" PointY="3.125" />
+        <AssociationConnector Association="MotorcycleModel.FK__Model__BrandID__25869641" />
+        <AssociationConnector Association="MotorcycleModel.FK__ModelPers__Model__2B3F6F97" />
+        <AssociationConnector Association="MotorcycleModel.FK__ModelPers__Perso__2A4B4B5E" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

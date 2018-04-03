@@ -17,15 +17,15 @@ namespace ToeffToeff.Persistence
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
         {
-            this.ModelPerson = new HashSet<ModelPerson>();
+            this.ModelPersons = new HashSet<ModelPerson>();
         }
     
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<System.DateTime> Birthdate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ModelPerson> ModelPerson { get; set; }
+        public virtual ICollection<ModelPerson> ModelPersons { get; set; }
     }
 }

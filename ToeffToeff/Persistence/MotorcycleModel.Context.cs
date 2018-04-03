@@ -25,9 +25,9 @@ namespace ToeffToeff.Persistence
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Brand> Brand { get; set; }
-        public virtual DbSet<Model> Model { get; set; }
-        public virtual DbSet<ModelPerson> ModelPerson { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Model> Models { get; set; }
+        public virtual DbSet<ModelPerson> ModelPersons { get; set; }
     }
 }

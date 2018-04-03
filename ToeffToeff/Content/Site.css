@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: white; 
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,23 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.brandbox {
+    background-color: lightgrey;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+    width: 30%;
+    display: inline-block;
+    margin: 1.5%;
+}
+
+.brandImg {
+    width: 90%;
+    margin: 5%;
+}
+
+.brandInfo {
+    margin: 5%;
 }

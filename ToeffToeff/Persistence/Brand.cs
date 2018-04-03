@@ -7,28 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using ToeffToeff.Interfaces.Entities;
-
 namespace ToeffToeff.Persistence
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Brand : IBrand
+    public partial class Brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Brand()
         {
-            this.Model = new HashSet<Model>();
+            this.Models = new HashSet<Model>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime FoundingDate { get; set; }
+        public Nullable<System.DateTime> FoundingDate { get; set; }
         public string StyleDescription { get; set; }
+        public string Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Model> Model { get; set; }
+        public virtual ICollection<Model> Models { get; set; }
     }
 }

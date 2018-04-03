@@ -7,30 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using ToeffToeff.Interfaces.Entities;
-
 namespace ToeffToeff.Persistence
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Model : IMotorcycle
+    public partial class Model
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Model()
         {
-            this.ModelPerson = new HashSet<ModelPerson>();
+            this.ModelPersons = new HashSet<ModelPerson>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string ModelSpecification { get; set; }
-        public decimal Price { get; set; }
+        public Nullable<decimal> Price { get; set; }
         public string Picture { get; set; }
-        public int BrandId { get; set; }
+        public Nullable<int> BrandID { get; set; }
     
         public virtual Brand Brand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ModelPerson> ModelPerson { get; set; }
+        public virtual ICollection<ModelPerson> ModelPersons { get; set; }
     }
 }

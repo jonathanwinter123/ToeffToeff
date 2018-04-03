@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using ToeffToeff.Interfaces.Entities;
-
-namespace ToeffToeff.Interfaces.Repositories
+﻿namespace ToeffToeff.Interfaces.Repositories
 {
+    using System.Collections.Generic;
+    using Entities;
+
     interface IMotorcycleRepository
     {
         List<IMotorcycle> GetAllAsync();

@@ -1,6 +1,6 @@
 ﻿namespace ToeffToeff.Interfaces.Entities
 {
-    interface IMotorcycle
+    public interface IMotorcycle
     {
         int Id { get; }
 

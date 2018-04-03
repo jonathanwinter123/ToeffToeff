@@ -14,9 +14,9 @@ namespace ToeffToeff.Persistence
     
     public partial class ModelPerson
     {
-        public int ID { get; set; }
-        public Nullable<int> PersonID { get; set; }
-        public Nullable<int> ModelID { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> PersonId { get; set; }
+        public Nullable<int> ModelId { get; set; }
     
         public virtual Model Model { get; set; }
         public virtual Person Person { get; set; }

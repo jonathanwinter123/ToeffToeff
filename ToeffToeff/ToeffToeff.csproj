@@ -201,6 +201,7 @@
       <DependentUpon>MotorcycleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MotorcycleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -214,6 +215,7 @@
       <LastGenOutput>MotorcycleModel.Context.cs</LastGenOutput>
       <DependentUpon>MotorcycleModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Persistence\MotorcycleModel.edmx.sql" />
     <Content Include="Persistence\MotorcycleModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MotorcycleModel.edmx</DependentUpon>
@@ -256,10 +258,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -291,7 +293,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50021</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

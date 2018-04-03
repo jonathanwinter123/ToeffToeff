@@ -1,0 +1,46 @@
+﻿@using ToeffToeff.Repositories
+@model IEnumerable<ToeffToeff.Persistence.Brand>
+
+@{
+    Layout = null;
+    var brands = new MotorcycleRepository().GetBrands();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css"/>
+</head>
+<body>
+
+@foreach (var item in brands)
+{
+    <div class="brandbox">
+        <img class="brandImg" alt=@item.Name src="@item.Picture"/>
+        <div class="brandInfo">
+            <p class="brandName">@item.Name</p>
+            <p class="brandFoundingDate">Gegründet: @item.FoundingDate</p>
+            <p class="brandDescription">@item.Description</p>
+        </div>
+    </div>
+
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoundingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleDescription)
+            </td>
+        </tr>*@
+}
+</body>
+</html>
