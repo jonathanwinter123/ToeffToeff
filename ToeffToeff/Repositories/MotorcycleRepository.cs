@@ -37,10 +37,11 @@ namespace ToeffToeff.Repositories
                 new Brand
                 {
                     Id = 2,
-                    Description = "marke2",
-                    FoundingDate = DateTime.Today,
-                    Name = "marke2",
-                    StyleDescription = string.Empty               
+                    Description = "Die Ducati Motor Holding S.p.A. ist ein italienischer Motorradhersteller mit Sitz in Bologna (Stadtteil Borgo Panigale) und Unternehmenstochter der Audi AG und gehört damit zum Volkswagen-Konzern.",
+                    FoundingDate = new DateTime(1926, 01, 01).Date,
+                    Name = "Ducati",
+                    StyleDescription = "Racing",
+                    Picture = "https://seeklogo.com/images/D/ducati-logo-4A395CFB95-seeklogo.com.png"
                 }
             };
             return test;
