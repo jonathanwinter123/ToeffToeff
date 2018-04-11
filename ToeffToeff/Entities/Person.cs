@@ -14,6 +14,6 @@
 
         public DateTime Birthdate { get; set; }
 
-        public List<Model> Models { get; set; }
+        public List<IModel> Models { get; set; }
     }
 }

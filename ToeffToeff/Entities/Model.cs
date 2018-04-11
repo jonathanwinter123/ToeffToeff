@@ -15,8 +15,8 @@
 
         public string Picture { get; set; }
 
-        public Brand Brand { get; set; }
+        public IBrand Brand { get; set; }
 
-        public List<Person> People { get; set; }
+        public List<IPerson> People { get; set; }
     }
 }

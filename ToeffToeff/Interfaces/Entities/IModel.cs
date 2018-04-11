@@ -15,8 +15,8 @@
 
         string Picture { get; set; }
 
-        Brand Brand { get; set; }
+        IBrand Brand { get; set; }
 
-        List<Person> People { get; set; }
+        List<IPerson> People { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace ToeffToeff.Interfaces.Entities
 
         DateTime Birthdate { get; set; }
 
-        List<Model> Models { get; set; }
+        List<IModel> Models { get; set; }
     }
 }
