@@ -26,20 +26,20 @@
         public async Task<List<IModel>> GetAllAsync()
         {
             List<IPersistedModel> persistedModels = await this.motorcycleContext.PersistedModels
-                                                                .Include(pm => pm.PersistedPersons)
+                                                                .Include(pm => pm.PersistedPersons.AsEnumerable())
                                                                 .Include(pm => pm.PersistedBrands)
                                                                 .Select(pm => (IPersistedModel) pm)
                                                                 .ToListAsync();
-            return persistedModels.Select(pm => this.modelFactory.CreateModelWithPersistedModel(pm)).ToList();
+            return persistedModels.Select(pm => this.modelFactory.CreateModelFromPersistedModel(pm)).ToList();
         }
 
         public async Task<IModel> GetSingleAsync(int id)
         {
             IPersistedModel persistedModel = await this.motorcycleContext.PersistedModels
-                                                       .Include(pm => pm.PersistedPersons)
+                                                       .Include(pm => pm.PersistedPersons.AsEnumerable())
                                                        .Include(pm => pm.PersistedBrands)
                                                        .FirstOrDefaultAsync(pm => pm.Id == id);
-            return this.modelFactory.CreateModelWithPersistedModel(persistedModel);
+            return this.modelFactory.CreateModelFromPersistedModel(persistedModel);
         }
     }
 }

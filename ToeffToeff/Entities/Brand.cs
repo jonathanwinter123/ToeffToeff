@@ -1,6 +1,7 @@
 ﻿namespace ToeffToeff.Entities
 {
     using System;
+    using System.Collections.Generic;
     using Interfaces.Entities;
 
     public class Brand : IBrand
@@ -16,5 +17,7 @@
         public string StyleDescription { get; set; }
 
         public string Picture { get; set; }
+
+        public IEnumerable<IModel> Models { get; set; }
     }
 }

@@ -1,12 +1,13 @@
 ﻿namespace ToeffToeff.Interfaces.Repositories
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Entities;
 
     public interface IBrandRepository
     {
-        List<IBrand> GetAllAsync();
+        Task<List<IBrand>> GetAllAsync();
 
-        IBrand GetSingleAsync(int id);
+        Task<IBrand> GetSingleAsync(int id);
     }
 }

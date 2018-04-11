@@ -2,6 +2,8 @@
 
 namespace ToeffToeff.Interfaces.Entities
 {
+    using System.Collections.Generic;
+
     public interface IBrand
     {
         int Id { get; set; }
@@ -13,5 +15,9 @@ namespace ToeffToeff.Interfaces.Entities
         DateTime FoundingDate { get; set; }
 
         string StyleDescription { get; set; }
+
+        string Picture { get; set; }
+
+        IEnumerable<IModel> Models { get; set; }
     }
 }

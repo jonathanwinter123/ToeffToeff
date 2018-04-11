@@ -1,12 +1,13 @@
 ﻿namespace ToeffToeff.Interfaces.Repositories
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Entities;
 
     public interface IPersonRepository
     {
-        List<IPerson> GetAllAsync();
+        Task<List<IPerson>> GetAllAsync();
 
-        IPerson GetSingleAsync(int id);
+        Task<IPerson> GetSingleAsync(int id);
     }
 }
