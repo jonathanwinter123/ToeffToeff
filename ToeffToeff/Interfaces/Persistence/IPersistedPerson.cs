@@ -1,6 +1,7 @@
-namespace ToeffToeff.Persistence
+namespace ToeffToeff.Interfaces.Persistence
 {
     using System.Collections.Generic;
+    using ToeffToeff.Persistence;
 
     public interface IPersistedPerson
     {

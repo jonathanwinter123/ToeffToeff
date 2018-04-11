@@ -10,7 +10,8 @@
 namespace ToeffToeff.Persistence
 {
     using System.Collections.Generic;
-    
+    using Interfaces.Persistence;
+
     public partial class PersistedPersons : IPersistedPerson
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

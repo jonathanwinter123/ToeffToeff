@@ -180,8 +180,8 @@
     <Compile Include="Interfaces\Repositories\IBrandRepository.cs" />
     <Compile Include="Interfaces\Repositories\IModelRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPersonRepository.cs" />
-    <Compile Include="Persistence\IPersistedBrand.cs" />
-    <Compile Include="Persistence\IPersistedPerson.cs" />
+    <Compile Include="Interfaces\Persistence\IPersistedBrand.cs" />
+    <Compile Include="Interfaces\Persistence\IPersistedPerson.cs" />
     <Compile Include="Persistence\MotorcycleContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
