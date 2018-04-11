@@ -4,6 +4,6 @@
 
     public interface IModelFactory
     {
-        IModel CreateModelWithPersistedModel(IPersistedModel persistedModels);
+        IModel CreateModelFromPersistedModel(IPersistedModel persistedModels);
     }
 }
