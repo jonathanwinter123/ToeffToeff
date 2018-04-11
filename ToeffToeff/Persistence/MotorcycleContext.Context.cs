@@ -11,11 +11,12 @@ namespace ToeffToeff.Persistence
 {
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Interfaces.Persistence;
 
-    public partial class MotorcycleDBEntities : DbContext
+    public partial class MotorcycleDb : DbContext, IMotorcycleContext
     {
-        public MotorcycleDBEntities()
-            : base("name=MotorcycleDBEntities")
+        public MotorcycleDb()
+            : base("name=MotorcycleDb")
         {
         }
     
@@ -25,7 +26,6 @@ namespace ToeffToeff.Persistence
         }
     
         public virtual DbSet<PersistedBrands> PersistedBrands { get; set; }
-        public virtual DbSet<PersistedModelPersons> PersistedModelPersons { get; set; }
         public virtual DbSet<PersistedModels> PersistedModels { get; set; }
         public virtual DbSet<PersistedPersons> PersistedPersons { get; set; }
     }

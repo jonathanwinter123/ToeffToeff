@@ -17,7 +17,7 @@ namespace ToeffToeff.Persistence
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PersistedPersons()
         {
-            this.PersistedModelPersons = new HashSet<PersistedModelPersons>();
+            this.PersistedModels = new HashSet<PersistedModels>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace ToeffToeff.Persistence
         public System.DateTime Birthdate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersistedModelPersons> PersistedModelPersons { get; set; }
+        public virtual ICollection<PersistedModels> PersistedModels { get; set; }
     }
 }

@@ -9,15 +9,15 @@
 
 namespace ToeffToeff.Persistence
 {
-    using System;
     using System.Collections.Generic;
-    
-    public partial class PersistedModels
+    using ToeffToeff.Interfaces.Persistence;
+
+    public partial class PersistedModels : IPersistedModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PersistedModels()
         {
-            this.PersistedModelPersons = new HashSet<PersistedModelPersons>();
+            this.PersistedPersons = new HashSet<PersistedPersons>();
         }
     
         public int Id { get; set; }
@@ -25,10 +25,9 @@ namespace ToeffToeff.Persistence
         public string ModelSpecification { get; set; }
         public decimal Price { get; set; }
         public string Picture { get; set; }
-        public int BrandID { get; set; }
     
         public virtual PersistedBrands PersistedBrands { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersistedModelPersons> PersistedModelPersons { get; set; }
+        public virtual ICollection<PersistedPersons> PersistedPersons { get; set; }
     }
 }

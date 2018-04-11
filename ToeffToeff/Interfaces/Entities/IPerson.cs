@@ -5,7 +5,7 @@ namespace ToeffToeff.Interfaces.Entities
     using System.Collections.Generic;
     using ToeffToeff.Entities;
 
-    interface IPerson
+    public interface IPerson
     {
         int Id { get; }
 
