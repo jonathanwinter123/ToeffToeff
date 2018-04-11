@@ -12,7 +12,7 @@ namespace ToeffToeff.Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class PersistedBrands
+    public partial class PersistedBrands : IPersistedBrand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PersistedBrands()
