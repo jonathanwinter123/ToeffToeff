@@ -166,48 +166,47 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Entities\IBrand.cs" />
-    <Compile Include="Entities\IModel.cs" />
-    <Compile Include="Entities\IPerson.cs" />
+    <Compile Include="Interfaces\Entities\IModel.cs" />
     <Compile Include="Entities\Model.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Entities\IBrand.cs" />
-    <Compile Include="Interfaces\Entities\IModelPerson.cs" />
-    <Compile Include="Interfaces\Entities\IMotorcycle.cs" />
     <Compile Include="Interfaces\Entities\IPerson.cs" />
-    <Compile Include="Interfaces\Repositories\IMotorcycleRepository.cs" />
-    <Compile Include="Persistence\MotorcycleModel.Context.cs">
+    <Compile Include="Interfaces\Persistence\IPersistedModel.cs" />
+    <Compile Include="Interfaces\Repositories\IBrandRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IModelRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPersonRepository.cs" />
+    <Compile Include="Persistence\MotorcycleContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.Context.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\MotorcycleModel.cs">
+    <Compile Include="Persistence\MotorcycleContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\MotorcycleModel.Designer.cs">
+    <Compile Include="Persistence\MotorcycleContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Persistence\PersistedBrands.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\PersistedModelPersons.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Persistence\PersistedModels.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Persistence\PersistedPersons.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\MotorcycleRepository.cs" />
+    <Compile Include="Repositories\BrandRepository.cs" />
+    <Compile Include="Interfaces\Persistence\IMotorcycleContext.cs" />
+    <Compile Include="Repositories\ModelRepository.cs" />
+    <Compile Include="Repositories\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -216,27 +215,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Persistence\MotorcycleModel.Context.tt">
+    <Content Include="Persistence\MotorcycleContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
-      <LastGenOutput>MotorcycleModel.Context.cs</LastGenOutput>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
+      <LastGenOutput>MotorcycleContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Persistence\MotorcycleModel.tt">
+    <Content Include="Persistence\MotorcycleContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
-      <LastGenOutput>MotorcycleModel.cs</LastGenOutput>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
+      <LastGenOutput>MotorcycleContext.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Persistence\MotorcycleModel.edmx">
+    <EntityDeploy Include="Persistence\MotorcycleContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MotorcycleModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MotorcycleContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Persistence\MotorcycleModel.edmx.diagram">
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+    <Content Include="Persistence\MotorcycleContext.edmx.diagram">
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
