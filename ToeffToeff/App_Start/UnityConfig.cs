@@ -37,7 +37,7 @@ namespace ToeffToeff
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IMotorcycleRepository, MotorcycleRepository>();
+            container.RegisterType<IModelRepository, ModelRepository>();
         }
     }
 }
