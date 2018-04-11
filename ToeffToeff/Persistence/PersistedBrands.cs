@@ -12,20 +12,22 @@ namespace ToeffToeff.Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class PersistedBrands
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Person()
+        public PersistedBrands()
         {
-            this.ModelPersons = new HashSet<ModelPerson>();
+            this.PersistedModels = new HashSet<PersistedModels>();
         }
     
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Nullable<System.DateTime> Birthdate { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public System.DateTime FoundingDate { get; set; }
+        public string StyleDescription { get; set; }
+        public string Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ModelPerson> ModelPersons { get; set; }
+        public virtual ICollection<PersistedModels> PersistedModels { get; set; }
     }
 }

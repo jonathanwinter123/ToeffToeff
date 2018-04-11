@@ -9,10 +9,9 @@
 
 namespace ToeffToeff.Persistence
 {
-    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class MotorcycleDBEntities : DbContext
     {
         public MotorcycleDBEntities()
@@ -25,9 +24,9 @@ namespace ToeffToeff.Persistence
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Model> Models { get; set; }
-        public virtual DbSet<ModelPerson> ModelPersons { get; set; }
+        public virtual DbSet<PersistedBrands> PersistedBrands { get; set; }
+        public virtual DbSet<PersistedModelPersons> PersistedModelPersons { get; set; }
+        public virtual DbSet<PersistedModels> PersistedModels { get; set; }
+        public virtual DbSet<PersistedPersons> PersistedPersons { get; set; }
     }
 }

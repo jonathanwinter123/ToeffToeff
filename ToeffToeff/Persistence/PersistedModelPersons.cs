@@ -12,13 +12,13 @@ namespace ToeffToeff.Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class ModelPerson
+    public partial class PersistedModelPersons
     {
         public int Id { get; set; }
-        public Nullable<int> PersonId { get; set; }
-        public Nullable<int> ModelId { get; set; }
+        public int PersonId { get; set; }
+        public int ModelId { get; set; }
     
-        public virtual Model Model { get; set; }
-        public virtual Person Person { get; set; }
+        public virtual PersistedModels PersistedModels { get; set; }
+        public virtual PersistedPersons PersistedPersons { get; set; }
     }
 }

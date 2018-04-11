@@ -4,254 +4,256 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MotorcycleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Brand">
+      <Schema Namespace="MotorcycleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PersistedBrands">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="200" />
-          <Property Name="Description" Type="varchar" MaxLength="250" />
-          <Property Name="FoundingDate" Type="date" />
-          <Property Name="StyleDescription" Type="varchar" MaxLength="250" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FoundingDate" Type="datetime" Nullable="false" />
+          <Property Name="StyleDescription" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Picture" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="Model">
+        <EntityType Name="PersistedModelPersons">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="200" />
-          <Property Name="ModelSpecification" Type="varchar" MaxLength="200" />
-          <Property Name="Price" Type="money" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="ModelId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersistedModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ModelSpecification" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Picture" Type="varchar(max)" />
-          <Property Name="BrandID" Type="int" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ModelPerson">
+        <EntityType Name="PersistedPersons">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PersonId" Type="int" />
-          <Property Name="ModelId" Type="int" />
-        </EntityType>
-        <EntityType Name="Person">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="100" />
-          <Property Name="LastName" Type="varchar" MaxLength="100" />
-          <Property Name="Birthdate" Type="date" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Birthdate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__Model__BrandID__25869641">
-          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
-          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <End Role="PersistedBrands" Type="Self.PersistedBrands" Multiplicity="1" />
+          <End Role="PersistedModels" Type="Self.PersistedModels" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Brand">
+            <Principal Role="PersistedBrands">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Model">
+            <Dependent Role="PersistedModels">
               <PropertyRef Name="BrandID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ModelPers__Model__2B3F6F97">
-          <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
-          <End Role="ModelPerson" Type="Self.ModelPerson" Multiplicity="*" />
+          <End Role="PersistedModels" Type="Self.PersistedModels" Multiplicity="1" />
+          <End Role="PersistedModelPersons" Type="Self.PersistedModelPersons" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Model">
+            <Principal Role="PersistedModels">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ModelPerson">
+            <Dependent Role="PersistedModelPersons">
               <PropertyRef Name="ModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ModelPers__Perso__2A4B4B5E">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="ModelPerson" Type="Self.ModelPerson" Multiplicity="*" />
+          <End Role="PersistedPersons" Type="Self.PersistedPersons" Multiplicity="1" />
+          <End Role="PersistedModelPersons" Type="Self.PersistedModelPersons" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="PersistedPersons">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ModelPerson">
+            <Dependent Role="PersistedModelPersons">
               <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MotorcycleModelStoreContainer">
-          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ModelPerson" EntityType="Self.ModelPerson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="MotorcycleDBModelStoreContainer">
+          <EntitySet Name="PersistedBrands" EntityType="Self.PersistedBrands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersistedModelPersons" EntityType="Self.PersistedModelPersons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersistedModels" EntityType="Self.PersistedModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersistedPersons" EntityType="Self.PersistedPersons" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Model__BrandID__25869641" Association="Self.FK__Model__BrandID__25869641">
-            <End Role="Brand" EntitySet="Brand" />
-            <End Role="Model" EntitySet="Model" />
+            <End Role="PersistedBrands" EntitySet="PersistedBrands" />
+            <End Role="PersistedModels" EntitySet="PersistedModels" />
           </AssociationSet>
           <AssociationSet Name="FK__ModelPers__Model__2B3F6F97" Association="Self.FK__ModelPers__Model__2B3F6F97">
-            <End Role="Model" EntitySet="Model" />
-            <End Role="ModelPerson" EntitySet="ModelPerson" />
+            <End Role="PersistedModels" EntitySet="PersistedModels" />
+            <End Role="PersistedModelPersons" EntitySet="PersistedModelPersons" />
           </AssociationSet>
           <AssociationSet Name="FK__ModelPers__Perso__2A4B4B5E" Association="Self.FK__ModelPers__Perso__2A4B4B5E">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="ModelPerson" EntitySet="ModelPerson" />
+            <End Role="PersistedPersons" EntitySet="PersistedPersons" />
+            <End Role="PersistedModelPersons" EntitySet="PersistedModelPersons" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MotorcycleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="MotorcycleDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Brands" EntityType="MotorcycleModel.Brand" />
-          <EntitySet Name="People" EntityType="MotorcycleModel.Person" />
-          <EntitySet Name="Models" EntityType="MotorcycleModel.Model" />
-          <EntitySet Name="ModelPersons" EntityType="MotorcycleModel.ModelPerson" />
-          <AssociationSet Name="FK__Model__BrandID__25869641" Association="MotorcycleModel.FK__Model__BrandID__25869641">
-            <End Role="Brand" EntitySet="Brands" />
-            <End Role="Model" EntitySet="Models" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ModelPers__Model__2B3F6F97" Association="MotorcycleModel.FK__ModelPers__Model__2B3F6F97">
-            <End Role="Model" EntitySet="Models" />
-            <End Role="ModelPerson" EntitySet="ModelPersons" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ModelPers__Perso__2A4B4B5E" Association="MotorcycleModel.FK__ModelPers__Perso__2A4B4B5E">
-            <End Role="Person" EntitySet="People" />
-            <End Role="ModelPerson" EntitySet="ModelPersons" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="Brand">
+      <Schema Namespace="MotorcycleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PersistedBrands">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="FoundingDate" Type="DateTime" Precision="0" />
-          <Property Name="StyleDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FoundingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StyleDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Models" Relationship="MotorcycleModel.FK__Model__BrandID__25869641" FromRole="Brand" ToRole="Model" />
+          <NavigationProperty Name="PersistedModels" Relationship="Self.FK__Model__BrandID__25869641" FromRole="PersistedBrands" ToRole="PersistedModels" />
         </EntityType>
-        <EntityType Name="Person">
+        <EntityType Name="PersistedModelPersons">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Birthdate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ModelPersons" Relationship="MotorcycleModel.FK__ModelPers__Perso__2A4B4B5E" FromRole="Person" ToRole="ModelPerson" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PersistedModels" Relationship="Self.FK__ModelPers__Model__2B3F6F97" FromRole="PersistedModelPersons" ToRole="PersistedModels" />
+          <NavigationProperty Name="PersistedPersons" Relationship="Self.FK__ModelPers__Perso__2A4B4B5E" FromRole="PersistedModelPersons" ToRole="PersistedPersons" />
         </EntityType>
-        <EntityType Name="Model">
+        <EntityType Name="PersistedModels">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ModelSpecification" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModelSpecification" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BrandID" Type="Int32" />
-          <NavigationProperty Name="Brand" Relationship="MotorcycleModel.FK__Model__BrandID__25869641" FromRole="Model" ToRole="Brand" />
-          <NavigationProperty Name="ModelPersons" Relationship="MotorcycleModel.FK__ModelPers__Model__2B3F6F97" FromRole="Model" ToRole="ModelPerson" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PersistedBrands" Relationship="Self.FK__Model__BrandID__25869641" FromRole="PersistedModels" ToRole="PersistedBrands" />
+          <NavigationProperty Name="PersistedModelPersons" Relationship="Self.FK__ModelPers__Model__2B3F6F97" FromRole="PersistedModels" ToRole="PersistedModelPersons" />
         </EntityType>
-        <EntityType Name="ModelPerson">
+        <EntityType Name="PersistedPersons">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="ModelId" Type="Int32" />
-          <NavigationProperty Name="Model" Relationship="MotorcycleModel.FK__ModelPers__Model__2B3F6F97" FromRole="ModelPerson" ToRole="Model" />
-          <NavigationProperty Name="Person" Relationship="MotorcycleModel.FK__ModelPers__Perso__2A4B4B5E" FromRole="ModelPerson" ToRole="Person" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PersistedModelPersons" Relationship="Self.FK__ModelPers__Perso__2A4B4B5E" FromRole="PersistedPersons" ToRole="PersistedModelPersons" />
         </EntityType>
         <Association Name="FK__Model__BrandID__25869641">
-          <End Type="MotorcycleModel.Brand" Role="Brand" Multiplicity="0..1" />
-          <End Type="MotorcycleModel.Model" Role="Model" Multiplicity="*" />
+          <End Role="PersistedBrands" Type="Self.PersistedBrands" Multiplicity="1" />
+          <End Role="PersistedModels" Type="Self.PersistedModels" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Brand">
+            <Principal Role="PersistedBrands">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Model">
+            <Dependent Role="PersistedModels">
               <PropertyRef Name="BrandID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ModelPers__Model__2B3F6F97">
-          <End Type="MotorcycleModel.Model" Role="Model" Multiplicity="0..1" />
-          <End Type="MotorcycleModel.ModelPerson" Role="ModelPerson" Multiplicity="*" />
+          <End Role="PersistedModels" Type="Self.PersistedModels" Multiplicity="1" />
+          <End Role="PersistedModelPersons" Type="Self.PersistedModelPersons" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Model">
+            <Principal Role="PersistedModels">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ModelPerson">
+            <Dependent Role="PersistedModelPersons">
               <PropertyRef Name="ModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ModelPers__Perso__2A4B4B5E">
-          <End Type="MotorcycleModel.Person" Role="Person" Multiplicity="0..1" />
-          <End Type="MotorcycleModel.ModelPerson" Role="ModelPerson" Multiplicity="*" />
+          <End Role="PersistedPersons" Type="Self.PersistedPersons" Multiplicity="1" />
+          <End Role="PersistedModelPersons" Type="Self.PersistedModelPersons" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="PersistedPersons">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ModelPerson">
+            <Dependent Role="PersistedModelPersons">
               <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="MotorcycleDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersistedBrands" EntityType="Self.PersistedBrands" />
+          <EntitySet Name="PersistedModelPersons" EntityType="Self.PersistedModelPersons" />
+          <EntitySet Name="PersistedModels" EntityType="Self.PersistedModels" />
+          <EntitySet Name="PersistedPersons" EntityType="Self.PersistedPersons" />
+          <AssociationSet Name="FK__Model__BrandID__25869641" Association="Self.FK__Model__BrandID__25869641">
+            <End Role="PersistedBrands" EntitySet="PersistedBrands" />
+            <End Role="PersistedModels" EntitySet="PersistedModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModelPers__Model__2B3F6F97" Association="Self.FK__ModelPers__Model__2B3F6F97">
+            <End Role="PersistedModels" EntitySet="PersistedModels" />
+            <End Role="PersistedModelPersons" EntitySet="PersistedModelPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModelPers__Perso__2A4B4B5E" Association="Self.FK__ModelPers__Perso__2A4B4B5E">
+            <End Role="PersistedPersons" EntitySet="PersistedPersons" />
+            <End Role="PersistedModelPersons" EntitySet="PersistedModelPersons" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MotorcycleModelStoreContainer" CdmEntityContainer="MotorcycleDBEntities">
-          <EntitySetMapping Name="Brands">
-            <EntityTypeMapping TypeName="MotorcycleModel.Brand">
-              <MappingFragment StoreEntitySet="Brand">
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="StyleDescription" ColumnName="StyleDescription" />
-                <ScalarProperty Name="FoundingDate" ColumnName="FoundingDate" />
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MotorcycleDBModelStoreContainer" CdmEntityContainer="MotorcycleDBEntities1">
+          <EntitySetMapping Name="PersistedBrands">
+            <EntityTypeMapping TypeName="MotorcycleDBModel.PersistedBrands">
+              <MappingFragment StoreEntitySet="PersistedBrands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="MotorcycleModel.Person">
-              <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Models">
-            <EntityTypeMapping TypeName="MotorcycleModel.Model">
-              <MappingFragment StoreEntitySet="Model">
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="FoundingDate" ColumnName="FoundingDate" />
+                <ScalarProperty Name="StyleDescription" ColumnName="StyleDescription" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ModelSpecification" ColumnName="ModelSpecification" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ModelPersons">
-            <EntityTypeMapping TypeName="MotorcycleModel.ModelPerson">
-              <MappingFragment StoreEntitySet="ModelPerson">
-                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <EntitySetMapping Name="PersistedModelPersons">
+            <EntityTypeMapping TypeName="MotorcycleDBModel.PersistedModelPersons">
+              <MappingFragment StoreEntitySet="PersistedModelPersons">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersistedModels">
+            <EntityTypeMapping TypeName="MotorcycleDBModel.PersistedModels">
+              <MappingFragment StoreEntitySet="PersistedModels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModelSpecification" ColumnName="ModelSpecification" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersistedPersons">
+            <EntityTypeMapping TypeName="MotorcycleDBModel.PersistedPersons">
+              <MappingFragment StoreEntitySet="PersistedPersons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -263,9 +265,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
