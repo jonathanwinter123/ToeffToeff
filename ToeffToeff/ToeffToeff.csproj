@@ -164,10 +164,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Persistence\Brand.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entities\IBrand.cs" />
+    <Compile Include="Entities\IModel.cs" />
+    <Compile Include="Entities\IPerson.cs" />
+    <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,12 +179,6 @@
     <Compile Include="Interfaces\Entities\IMotorcycle.cs" />
     <Compile Include="Interfaces\Entities\IPerson.cs" />
     <Compile Include="Interfaces\Repositories\IMotorcycleRepository.cs" />
-    <Compile Include="Persistence\Model.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\ModelPerson.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Persistence\MotorcycleModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,7 +194,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MotorcycleModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\Person.cs">
+    <Compile Include="Persistence\PersistedBrands.cs">
+      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\PersistedModelPersons.cs">
+      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\PersistedModels.cs">
+      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\PersistedPersons.cs">
       <DependentUpon>MotorcycleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,10 +218,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Persistence\MotorcycleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MotorcycleModel.Context.cs</LastGenOutput>
       <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+      <LastGenOutput>MotorcycleModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Persistence\MotorcycleModel.edmx.sql" />
     <Content Include="Persistence\MotorcycleModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MotorcycleModel.edmx</DependentUpon>
