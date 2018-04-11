@@ -166,6 +166,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Interfaces\Entities\IBrandFactory.cs" />
     <Compile Include="Interfaces\Entities\IModel.cs" />
     <Compile Include="Entities\Model.cs" />
     <Compile Include="Entities\Person.cs" />
@@ -174,6 +175,7 @@
     </Compile>
     <Compile Include="Interfaces\Entities\IBrand.cs" />
     <Compile Include="Interfaces\Entities\IPerson.cs" />
+    <Compile Include="Interfaces\Entities\IPersonFactory.cs" />
     <Compile Include="Interfaces\Persistence\IPersistedModel.cs" />
     <Compile Include="Interfaces\Repositories\IBrandRepository.cs" />
     <Compile Include="Interfaces\Repositories\IModelRepository.cs" />
