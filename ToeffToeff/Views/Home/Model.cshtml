@@ -1,0 +1,25 @@
+﻿@using ToeffToeff.Repositories
+
+@{
+    Layout = null;
+    var models = new MotorcycleRepository.GetBrandModels(HttpContext.Current.Request.Url.);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BrandModels</title>
+</head>
+<body>
+    @{
+        foreach (var model in models)
+        {
+            
+        }
+    }
+<div>
+</div>
+</body>
+</html>
