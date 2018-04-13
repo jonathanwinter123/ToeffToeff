@@ -1,8 +1,11 @@
 ﻿namespace ToeffToeff.Interfaces.Entities
 {
-    public interface IMotorcycle
+    using System.Collections.Generic;
+    using ToeffToeff.Entities;
+
+    public interface IModel
     {
-        int Id { get; }
+        int Id { get; set; }
 
         string Name { get; set; }
 
@@ -12,6 +15,8 @@
 
         string Picture { get; set; }
 
-        int BrandId { get; set; }
+        IBrand Brand { get; set; }
+
+        List<IPerson> People { get; set; }
     }
 }

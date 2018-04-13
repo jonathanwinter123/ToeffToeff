@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -164,44 +164,54 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Persistence\Brand.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Interfaces\Entities\IBrandFactory.cs" />
+    <Compile Include="Interfaces\Entities\IModel.cs" />
+    <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Entities\IBrand.cs" />
-    <Compile Include="Interfaces\Entities\IModelPerson.cs" />
-    <Compile Include="Interfaces\Entities\IMotorcycle.cs" />
     <Compile Include="Interfaces\Entities\IPerson.cs" />
-    <Compile Include="Interfaces\Repositories\IMotorcycleRepository.cs" />
-    <Compile Include="Persistence\Model.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\ModelPerson.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\MotorcycleModel.Context.cs">
+    <Compile Include="Interfaces\Entities\IPersonFactory.cs" />
+    <Compile Include="Interfaces\Persistence\IPersistedModel.cs" />
+    <Compile Include="Interfaces\Repositories\IBrandRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IModelRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPersonRepository.cs" />
+    <Compile Include="Interfaces\Persistence\IPersistedBrand.cs" />
+    <Compile Include="Interfaces\Persistence\IPersistedPerson.cs" />
+    <Compile Include="Persistence\MotorcycleContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.Context.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\MotorcycleModel.cs">
+    <Compile Include="Persistence\MotorcycleContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\MotorcycleModel.Designer.cs">
+    <Compile Include="Persistence\MotorcycleContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\Person.cs">
-      <DependentUpon>MotorcycleModel.tt</DependentUpon>
+    <Compile Include="Persistence\PersistedBrands.cs">
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\PersistedModels.cs">
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\PersistedPersons.cs">
+      <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\MotorcycleRepository.cs" />
+    <Compile Include="Repositories\BrandRepository.cs" />
+    <Compile Include="Interfaces\Persistence\IMotorcycleContext.cs" />
+    <Compile Include="Interfaces\Entities\IModelFactory.cs" />
+    <Compile Include="Repositories\ModelRepository.cs" />
+    <Compile Include="Repositories\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -210,28 +220,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Persistence\MotorcycleModel.Context.tt">
+    <Content Include="Persistence\MotorcycleContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MotorcycleModel.Context.cs</LastGenOutput>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
+      <LastGenOutput>MotorcycleContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Persistence\MotorcycleModel.edmx.sql" />
-    <Content Include="Persistence\MotorcycleModel.tt">
+    <Content Include="Persistence\MotorcycleContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
-      <LastGenOutput>MotorcycleModel.cs</LastGenOutput>
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
+      <LastGenOutput>MotorcycleContext.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Persistence\MotorcycleModel.edmx">
+    <EntityDeploy Include="Persistence\MotorcycleContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MotorcycleModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MotorcycleContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Persistence\MotorcycleModel.edmx.diagram">
-      <DependentUpon>MotorcycleModel.edmx</DependentUpon>
+    <Content Include="Persistence\MotorcycleContext.edmx.diagram">
+      <DependentUpon>MotorcycleContext.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
