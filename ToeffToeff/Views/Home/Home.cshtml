@@ -1,9 +1,15 @@
-﻿@using ToeffToeff.Repositories
-@model IEnumerable<ToeffToeff.Persistence.Brand>
+﻿@using System.Threading.Tasks
+@using ToeffToeff.Interfaces.Entities
+@using ToeffToeff.Interfaces.Persistence
+@using ToeffToeff.Interfaces.Repositories
+@using ToeffToeff.Persistence
+@using ToeffToeff.Repositories
+@model IEnumerable<ToeffToeff.Persistence.PersistedBrands>
 
 @{
     Layout = null;
-    var brands = new MotorcycleRepository().GetBrands();
+    var repo = new BrandRepository(new MotorcycleDb(), null);
+    var brands = repo.GetAllAsync().Result;
 }
 
 <!DOCTYPE html>
