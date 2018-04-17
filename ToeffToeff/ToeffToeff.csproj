@@ -162,26 +162,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Entities\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Interfaces\Entities\IBrandFactory.cs" />
-    <Compile Include="Interfaces\Entities\IModel.cs" />
-    <Compile Include="Entities\Model.cs" />
-    <Compile Include="Entities\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\Entities\IBrand.cs" />
-    <Compile Include="Interfaces\Entities\IPerson.cs" />
-    <Compile Include="Interfaces\Entities\IPersonFactory.cs" />
-    <Compile Include="Interfaces\Persistence\IPersistedModel.cs" />
-    <Compile Include="Interfaces\Repositories\IBrandRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IModelRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IPersonRepository.cs" />
-    <Compile Include="Interfaces\Persistence\IPersistedBrand.cs" />
-    <Compile Include="Interfaces\Persistence\IPersistedPerson.cs" />
     <Compile Include="Persistence\MotorcycleContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,11 +191,6 @@
       <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BrandRepository.cs" />
-    <Compile Include="Interfaces\Persistence\IMotorcycleContext.cs" />
-    <Compile Include="Interfaces\Entities\IModelFactory.cs" />
-    <Compile Include="Repositories\ModelRepository.cs" />
-    <Compile Include="Repositories\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

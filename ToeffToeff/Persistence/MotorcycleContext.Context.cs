@@ -11,9 +11,8 @@ namespace ToeffToeff.Persistence
 {
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Interfaces.Persistence;
 
-    public partial class MotorcycleDb : DbContext, IMotorcycleContext
+    public partial class MotorcycleDb : DbContext
     {
         public MotorcycleDb()
             : base("name=MotorcycleDb")

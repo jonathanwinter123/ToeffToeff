@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
+using ToeffToeff.Persistence;
 
 namespace ToeffToeff.Controllers
 {
@@ -6,7 +10,9 @@ namespace ToeffToeff.Controllers
     {
         public ActionResult Home()
         {
-            return View();
+            MotorcycleDb motorcycleDb = new MotorcycleDb();
+            List<PersistedBrands> persistedBrands = motorcycleDb.PersistedBrands.Include(pb => pb.PersistedModels).ToList();
+            return View(persistedBrands);
         }
 
         public ActionResult About()

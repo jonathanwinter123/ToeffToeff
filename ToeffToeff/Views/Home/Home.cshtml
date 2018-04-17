@@ -1,15 +1,8 @@
-﻿@using System.Threading.Tasks
-@using ToeffToeff.Interfaces.Entities
-@using ToeffToeff.Interfaces.Persistence
-@using ToeffToeff.Interfaces.Repositories
-@using ToeffToeff.Persistence
-@using ToeffToeff.Repositories
-@model IEnumerable<ToeffToeff.Persistence.PersistedBrands>
+﻿@using ToeffToeff.Persistence
+@model List<PersistedBrands>
 
 @{
     Layout = null;
-    var repo = new BrandRepository(new MotorcycleDb(), null);
-    var brands = repo.GetAllAsync().Result;
 }
 
 <!DOCTYPE html>
@@ -29,7 +22,7 @@
     <nav class="navbar navbar-default ">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="Home">TöffTöff</a>
+                <a class="navbar-brand" href="#">TöffTöff</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
@@ -41,7 +34,7 @@
     </nav>
 
 
-@foreach (var item in brands)
+@foreach (var item in Model)
 {
     <div class="brandbox">
         <div class="brandImgContainer">
