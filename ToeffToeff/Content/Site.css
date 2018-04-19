@@ -115,3 +115,8 @@ body {
     float: right;
 }
 
+h2 {
+    margin: 40%;
+    display: inline-block;
+    color: white !important;
+}
