@@ -1,0 +1,77 @@
+﻿@model ToeffToeff.Persistence.PersistedPersons
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../Home/Index">TöffTöff</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="../Home/Index">Home</a></li>
+            <li class="active"><a href="#">Registieren</a></li>
+        </ul>
+    </div>
+</nav>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+<div class="form-horizontal brandbox">
+    <h4>Person</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="userBoxes">
+        <div class="form-group">
+            @Html.Label("Vorname:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Nachname:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Geburtstagsdatum:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    
+    <div class="userBoxes">
+        <div class="g-recaptcha captcha" data-sitekey="6Ld6P1QUAAAAAKskHq12nvzHDx_Z5kIHqs4fmXpS"></div>  
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Benutzer erstellen" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }  
+</body>
+</html>

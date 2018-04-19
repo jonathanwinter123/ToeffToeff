@@ -8,11 +8,16 @@ namespace ToeffToeff.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Home()
+        public ActionResult Index()
         {
-            MotorcycleDb motorcycleDb = new MotorcycleDb();
-            List<PersistedBrands> persistedBrands = motorcycleDb.PersistedBrands.Include(pb => pb.PersistedModels).ToList();
+            var motorcycleDb = new MotorcycleDb();
+            var persistedBrands = motorcycleDb.PersistedBrands.Include(pb => pb.PersistedModels).ToList();
             return View(persistedBrands);
+        }
+
+        public ActionResult Model(string id)
+        {
+            return RedirectToAction("Index", "Model", id);
         }
 
         public ActionResult About()
