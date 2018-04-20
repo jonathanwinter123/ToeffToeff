@@ -118,5 +118,17 @@ body {
 h2 {
     margin: 40%;
     display: inline-block;
-    color: white !important;
+}
+
+h1 {
+    margin: auto;
+    mix-blend-mode: color-dodge;
+    font-size: 150px !important;
+}
+
+#countDownDiv {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
 }

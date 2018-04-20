@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ToeffToeff.Persistence;
 
 namespace ToeffToeff.Controllers
 {
@@ -13,5 +14,23 @@ namespace ToeffToeff.Controllers
         {
             return View();
         }
+
+        public virtual ActionResult Save(Persistence.PersistedPersons person)
+        {
+            var motorCycleDb = new MotorcycleDb();
+            motorCycleDb.PersistedPersons.Add(person);
+            motorCycleDb.SaveChanges();
+
+            return RedirectToAction("Sucess");
+        }
+
+        public ActionResult Sucess()
+        {
+            return View();
+        }
     }
 }
+
+
+
+
