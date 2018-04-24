@@ -111,6 +111,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="UkAdcHtmlAttributeProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UkadcHtmlAttributeProvider.0.0.2\lib\net40\UkAdcHtmlAttributeProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
     </Reference>
@@ -251,6 +254,12 @@
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Sucess.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\HiddenInput.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
