@@ -22,16 +22,26 @@ namespace ToeffToeff.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            this.ViewBag.Message = "Your application description page.";
 
-            return View();
+            return this.View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            this.ViewBag.Message = "Your contact page.";
 
-            return View();
+            return this.View();
+        }
+
+        public ActionResult CreateUser()
+        {
+            return this.View(new PersistedPersons());
+        }
+
+        public ActionResult CreateUser(FormCollection collection)
+        {
+            return this.RedirectToAction("Home");
         }
     }
 }
