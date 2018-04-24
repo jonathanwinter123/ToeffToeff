@@ -13,7 +13,7 @@
         {
             var motorcycleDb = new MotorcycleDb();
             var persistedModels = motorcycleDb.PersistedModels.Where(x => x.PersistedBrands.Id == brandId).Include(x => x.PersistedBrands).Include(x => x.PersistedPersons).ToList();
-            return View(persistedModels);
+            return this.View(persistedModels);
         }
     }
 }

@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using ToeffToeff.Persistence;
-
-namespace ToeffToeff.Controllers
+﻿namespace ToeffToeff.Controllers
 {
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Persistence;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             var motorcycleDb = new MotorcycleDb();
             var persistedBrands = motorcycleDb.PersistedBrands.Include(pb => pb.PersistedModels).ToList();
-            return View(persistedBrands);
+            return this.View(persistedBrands);
         }
 
         public ActionResult Model(string id)
         {
-            return RedirectToAction("Index", "Model", id);
+            return this.RedirectToAction("Index", "Model", id);
         }
 
         public ActionResult About()
@@ -32,16 +31,6 @@ namespace ToeffToeff.Controllers
             this.ViewBag.Message = "Your contact page.";
 
             return this.View();
-        }
-
-        public ActionResult CreateUser()
-        {
-            return this.View(new PersistedPersons());
-        }
-
-        public ActionResult CreateUser(FormCollection collection)
-        {
-            return this.RedirectToAction("Home");
         }
     }
 }

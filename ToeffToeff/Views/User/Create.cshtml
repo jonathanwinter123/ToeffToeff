@@ -1,8 +1,11 @@
-﻿@model ToeffToeff.Persistence.PersistedPersons
+﻿@using System.ComponentModel.DataAnnotations
+@model ToeffToeff.Persistence.Person
 
 @{
     Layout = null;
 }
+
+@Html.Raw(TempData["error"])
 
 <!DOCTYPE html>
 
@@ -59,7 +62,7 @@
         <div class="form-group">
             @Html.Label("Geburtstagsdatum:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" }, DataTypeName = "Date", Required = true })
                 @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
             </div>
         </div>

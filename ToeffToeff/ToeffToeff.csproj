@@ -195,6 +195,7 @@
     <Compile Include="Persistence\PersistedPersons.cs">
       <DependentUpon>MotorcycleContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,7 +254,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Sucess.cshtml" />
+    <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
