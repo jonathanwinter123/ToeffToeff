@@ -53,6 +53,11 @@ body {
     max-width: 100%;
 }
 
+.modelImg {
+    width: 95%;
+    margin: 5%;
+}
+
 .brandInfo {
     display: inline-block;
     width: 70%;

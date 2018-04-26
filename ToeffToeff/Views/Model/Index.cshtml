@@ -38,10 +38,13 @@
                 <img class="modelImg" src="@item.Picture" alt="No picture found for @item.Name @item.ModelSpecification"/>
                 <p class="modelName">@item.Name @item.ModelSpecification</p>
                 <p class="modellInfo">Marke: @item.PersistedBrands.Name</p>
-                <p class="modellInfo">Preis: @item.Price.ToString() Fr.</p>
+                <p class="modellInfo">Preis: @item.Price.ToString("C")</p>
                 @if (item.PersistedPersons.Count == 1)
                 {
                 <p class="modellInfo">Jemandem gefällt dieses Motorrad</p>
+                }
+                else if (item.PersistedPersons.Count == 0){
+                <p class="modellInfo">Niemandem gefällt dieses Motorrad</p>
                 }
                 else
                 {
