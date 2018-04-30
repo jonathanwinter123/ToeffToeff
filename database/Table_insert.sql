@@ -1,16 +1,19 @@
 USE MotorcycleDB
 GO
 
-DELETE FROM PersistedModelPerson
-DELETE FROM PersistedPersons
-DELETE FROM PersistedModels
-DELETE FROM PersistedBrands
-GO
+IF EXISTS(SELECT * FROM PersistedBrands, PersistedModels, PersistedPersons)
+BEGIN
+	DELETE FROM PersistedModelPerson
+	DELETE FROM PersistedPersons
+	DELETE FROM PersistedModels
+	DELETE FROM PersistedBrands
 
-DBCC CHECKIDENT ('[PersistedPersons]', RESEED, 0);
-DBCC CHECKIDENT ('[PersistedModels]', RESEED, 0);
-DBCC CHECKIDENT ('[PersistedBrands]', RESEED, 0);
-GO
+	DBCC CHECKIDENT ('[PersistedPersons]', RESEED, 0);
+	DBCC CHECKIDENT ('[PersistedModels]', RESEED, 0);
+	DBCC CHECKIDENT ('[PersistedBrands]', RESEED, 0);
+END
+
+
 
 INSERT INTO PersistedBrands (Name, Description, FoundingDate, StyleDescription, Picture)
 VALUES
