@@ -15,38 +15,54 @@ namespace ToeffToeff.Controllers
         // GET: User
         public ActionResult Create()
         {
-            return this.View();
+            return View();
         }
 
         [HttpPost]
         public ActionResult Save(Person person)
         {
-            string response = this.Request["g-recaptcha-response"];
-            string secretKey = "6Ld6P1QUAAAAAO_mfeLQ92DlyKWc75WLVDrk3l9e";
-            WebClient client = new WebClient();
-            string downloadString = $"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={response}";
-            string result = client.DownloadString(downloadString);
-            JObject obj = JObject.Parse(result);
-            bool status = (bool)obj.SelectToken("success");
+            const string SecretKey = "6Ld6P1QUAAAAAO_mfeLQ92DlyKWc75WLVDrk3l9e";
+            var response = this.Request["g-recaptcha-response"];
+            var client = new WebClient();
+            var downloadString = $"https://www.google.com/recaptcha/api/siteverify?secret={SecretKey}&response={response}";
+            var result = client.DownloadString(downloadString);
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
 
             if (person.Id == 0 && person.Birthdate > new DateTime(1753, 1, 1) && person.Birthdate < DateTime.MaxValue && person.FirstName.IsNullOrWhiteSpace() == false && person.LastName.IsNullOrWhiteSpace() == false && status)
             {
-                PersistedPersons persistedPerson = new PersistedPersons { Id = person.Id, FirstName = person.FirstName, LastName = person.LastName, Birthdate = person.Birthdate };
+                var persistedPerson = new PersistedPersons { Id = person.Id, FirstName = person.FirstName, LastName = person.LastName, Birthdate = person.Birthdate };
                 var motorCycleDb = new MotorcycleDb();
                 motorCycleDb.PersistedPersons.Add(persistedPerson);
                 motorCycleDb.SaveChanges();
-                return this.RedirectToAction("Success");
+                return RedirectToAction("Success");
 
             }
 
-            this.TempData["error"] = "<script>alert('Falsche Angaben! Bitte überprüfen Sie nochmals Ihre Angaben.')</script>";
+            TempData["error"] = "<script>alert('Falsche Angaben! Bitte überprüfen Sie nochmals Ihre Angaben.')</script>";
 
-            return this.RedirectToAction("Create");
+            return RedirectToAction("Create");
         }
 
         public ActionResult Success()
         {
-            return this.View();
+            return View();
+        }
+
+        public ActionResult List()
+        {
+            var motorcycleDb = new MotorcycleDb();
+            var persistedPersons = motorcycleDb.PersistedPersons.ToList();
+            return View(persistedPersons);
+        }
+
+        public ActionResult Delete()
+        {
+            var motorcycleDb = new MotorcycleDb();
+            var personToDelete = motorcycleDb.PersistedPersons.Find(Convert.ToInt32(RouteData.Values["id"] + Request.Url?.Query));
+            motorcycleDb.PersistedPersons.Remove(personToDelete ?? throw new NullReferenceException());
+            motorcycleDb.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }

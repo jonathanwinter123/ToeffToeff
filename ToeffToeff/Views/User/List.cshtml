@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ToeffToeff.Persistence.PersistedPersons>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Persons</title>
+</head>
+<body>
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../Home/Index">TöffTöff</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="../Home/Index">Home</a></li>
+                <li><a href="../User/List">Benutzerübersicht</a></li>
+                <li><a href="../User/Create">Registieren</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="brandbox">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Vorname")
+            </th>
+            <th>
+                @Html.DisplayName("Nachname")
+            </th>
+            <th>
+                @Html.DisplayName("Geburtstagsdatum")
+            </th>
+            <th>
+                @Html.DisplayName("Likes")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @item.Birthdate.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersistedModels.Count)
+                </td>
+                <td>
+                    @Html.ActionLink("Löschen", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Registrieren", "Create")
+    </p>
+</div>
+</body>
+</html>
