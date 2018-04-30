@@ -38,10 +38,10 @@ VALUES
 INSERT INTO PersistedModels (Name, ModelSpecification, Price, BrandID, Picture)
 VALUES
 	('Bonneville'
-	,'T-100 Black'
+	,'T-100'
 	,'10000'
 	,1
-	,'http://images.triumphmotorcycles.co.uk/media-library/images/configurator/modern%20classics/dbx/jet_black_dbx_rhs.png?w=825'),
+	,'http://triumphmotorcyclesjakarta.com/wp-content/uploads/2016/09/Triumph-MF6_MY14_Bonneville_T100_PGCX_RHS.png'),
 	('Bobber'
 	,'Black'
 	,'12999'
@@ -61,7 +61,7 @@ VALUES
 	,'10'
 	,'14999'
 	,2
-	,'https://gacheckpoint.com/wp-content/uploads/2018/04/yamaha-2018-MT-10-blue_2.png'),
+	,'https://www.yamaha-motor.ca/images/pages/products/units/MC/medium/2017_FZ-10_Grey_3.png'),
 	('Monster'
 	,'1200'
 	,'15790'
