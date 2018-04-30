@@ -19,27 +19,27 @@ namespace ToeffToeff.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Save(Person person)
+        public ActionResult Save(Person person)
         {
             string response = this.Request["g-recaptcha-response"];
-            string secretKey = "6Ld6P1QUAAAAAKskHq12nvzHDx_Z5kIHqs4fmXpS";
+            string secretKey = "6Ld6P1QUAAAAAO_mfeLQ92DlyKWc75WLVDrk3l9e";
             WebClient client = new WebClient();
-            string result = client.DownloadString($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={response}");
+            string downloadString = $"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={response}";
+            string result = client.DownloadString(downloadString);
             JObject obj = JObject.Parse(result);
             bool status = (bool)obj.SelectToken("success");
 
-            if (person.Id == 0 && person.Birthdate > DateTime.MinValue && person.Birthdate < DateTime.MaxValue && person.FirstName.IsNullOrWhiteSpace() == false && person.LastName.IsNullOrWhiteSpace() == false && status)
+            if (person.Id == 0 && person.Birthdate > new DateTime(1753, 1, 1) && person.Birthdate < DateTime.MaxValue && person.FirstName.IsNullOrWhiteSpace() == false && person.LastName.IsNullOrWhiteSpace() == false && status)
             {
                 PersistedPersons persistedPerson = new PersistedPersons { Id = person.Id, FirstName = person.FirstName, LastName = person.LastName, Birthdate = person.Birthdate };
                 var motorCycleDb = new MotorcycleDb();
                 motorCycleDb.PersistedPersons.Add(persistedPerson);
                 motorCycleDb.SaveChanges();
+                return this.RedirectToAction("Success");
 
             }
-            else
-            {
-                this.TempData["error"] = "<script>alert('Falsche Angaben! Bitte überprüfen Sie nochmals Ihre Angaben.')</script>";
-            }
+
+            this.TempData["error"] = "<script>alert('Falsche Angaben! Bitte überprüfen Sie nochmals Ihre Angaben.')</script>";
 
             return this.RedirectToAction("Create");
         }

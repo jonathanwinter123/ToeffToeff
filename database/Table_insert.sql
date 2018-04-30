@@ -7,11 +7,6 @@ DELETE FROM PersistedModels
 DELETE FROM PersistedBrands
 GO
 
-DBCC CHECKIDENT ('[PersistedPersons]', RESEED, 0);
-DBCC CHECKIDENT ('[PersistedModels]', RESEED, 0);
-DBCC CHECKIDENT ('[PersistedBrands]', RESEED, 0);
-GO
-
 INSERT INTO PersistedBrands (Name, Description, FoundingDate, StyleDescription, Picture)
 VALUES
 	('Triumph' 
@@ -34,6 +29,8 @@ VALUES
 	,CONVERT(Date,'01-01-1903')
 	,'Vintage/Modern-verschnitte'
 	,'https://upload.wikimedia.org/wikipedia/de/thumb/b/b4/Logo_Harley-Davidson.svg/400px-Logo_Harley-Davidson.svg.png')
+
+go
 
 INSERT INTO PersistedModels (Name, ModelSpecification, Price, BrandID, Picture)
 VALUES
@@ -82,6 +79,8 @@ VALUES
 	,'22500'
 	,4
 	,'https://cdn.shopify.com/s/files/1/1890/9317/products/c18_FLHCS_ANV_R-legend_blue-vivid_black_e2f32f8a-7983-436d-8f6b-886f66028568_530x@2x.png?v=1505844932')
+
+go
 
 INSERT INTO PersistedPersons (FirstName, LastName, Birthdate) 
 VALUES
