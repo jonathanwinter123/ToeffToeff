@@ -163,12 +163,15 @@ CREATE NONCLUSTERED INDEX [IX_FK__Model__BrandID__25869641] ON [dbo].[PersistedM
 GO
 ALTER TABLE [dbo].[PersistedModelPerson]  WITH CHECK ADD FOREIGN KEY([ModelId])
 REFERENCES [dbo].[PersistedModels] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[PersistedModelPerson]  WITH CHECK ADD FOREIGN KEY([PersonId])
 REFERENCES [dbo].[PersistedPersons] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[PersistedModels]  WITH CHECK ADD  CONSTRAINT [FK__Model__BrandID__25869641] FOREIGN KEY([BrandID])
 REFERENCES [dbo].[PersistedBrands] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[PersistedModels] CHECK CONSTRAINT [FK__Model__BrandID__25869641]
 GO
