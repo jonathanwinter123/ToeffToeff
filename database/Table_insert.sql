@@ -1,6 +1,8 @@
 USE MotorcycleDB
 GO
 
+SET DATEFORMAT dmy
+
 IF EXISTS(SELECT * FROM PersistedBrands, PersistedModels, PersistedPersons)
 BEGIN
 	DELETE FROM PersistedModelPerson
@@ -90,10 +92,10 @@ INSERT INTO PersistedPersons (FirstName, LastName, Birthdate)
 VALUES
 	('Simon'
 	,'Baumeler'
-	,CONVERT(Date,'02-19-1999')),
+	,CONVERT(Date,'19-02-1999')),
 	('Jonathan'
 	,'Winter'
-	,CONVERT(Date,'01-13-2000')),
+	,CONVERT(Date,'13-01-2000')),
 	('Patrick'
 	,'Joller'
 	,CONVERT(Date,'01-01-1975'))
